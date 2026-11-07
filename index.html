@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>withrasool | معامله‌گر طلا به سبک ICT</title>
+  <meta name="description" content="تحلیل روزانه و هفتگی طلا (XAU/USD) به سبک ICT، آموزش مفاهیم اسمارت‌مانی و ابزار چک‌لیست بایاس." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Vazirmatn', 'Tahoma', 'sans-serif'] },
+          colors: {
+            night: { 950: '#05070a', 900: '#0a0e13', 800: '#111820', 700: '#18212c' },
+            gold: { 300: '#f7e3a1', 400: '#f3cf6b', 500: '#d4af37', 600: '#b8922a' },
+            profit: { 400: '#34d399', 500: '#10b981', 600: '#059669' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #05070a; color: #e5e7eb; }
+    .gold-text { background: linear-gradient(135deg, #f7e3a1 0%, #d4af37 50%, #b8922a 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .glass { background: rgba(17, 24, 32, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(212, 175, 55, 0.12); }
+    .card-hover { transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
+    .card-hover:hover { transform: translateY(-4px); border-color: rgba(212, 175, 55, .45); box-shadow: 0 12px 40px -12px rgba(212, 175, 55, .25); }
+    .grid-bg {
+      background-image: linear-gradient(rgba(212,175,55,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,.05) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .glow { box-shadow: 0 0 60px -10px rgba(16, 185, 129, .35); }
+    .chip-active { background: #d4af37; color: #05070a; border-color: #d4af37; }
+    input[type="checkbox"] { accent-color: #10b981; width: 18px; height: 18px; }
+  </style>
+</head>
+
+<body class="font-sans antialiased min-h-screen">
+
+  <!-- Navbar -->
+  <header class="fixed top-0 inset-x-0 z-50 glass">
+    <nav class="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-2">
+        <span class="w-9 h-9 rounded-lg bg-gradient-to-br from-gold-300 to-gold-600 flex items-center justify-center text-night-950 font-black">R</span>
+        <span class="font-black text-lg gold-text">withrasool</span>
+      </a>
+      <ul class="hidden md:flex items-center gap-7 text-sm text-gray-300">
+        <li><a href="#education" class="hover:text-gold-400 transition">آموزش ICT</a></li>
+        <li><a href="#analysis" class="hover:text-gold-400 transition">تحلیل‌ها</a></li>
+        <li><a href="#tools" class="hover:text-gold-400 transition">ابزارها</a></li>
+        <li><a href="#journal" class="hover:text-gold-400 transition">ژورنال</a></li>
+        <li><a href="#contact" class="hover:text-gold-400 transition">ارتباط</a></li>
+      </ul>
+      <a href="#contact" class="hidden md:inline-block px-5 py-2 rounded-lg bg-profit-500 hover:bg-profit-600 text-white text-sm font-bold transition">عضویت در کانال</a>
+      <button id="menuBtn" class="md:hidden text-gold-400 p-2" aria-label="منو">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </nav>
+    <div id="mobileMenu" class="hidden md:hidden border-t border-white/5 px-5 py-4 space-y-3 text-gray-200">
+      <a href="#education" class="block">آموزش ICT</a>
+      <a href="#analysis" class="block">تحلیل‌ها</a>
+      <a href="#tools" class="block">ابزارها</a>
+      <a href="#journal" class="block">ژورنال</a>
+      <a href="#contact" class="block">ارتباط</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero" class="relative pt-32 pb-24 px-5 grid-bg overflow-hidden">
+    <div class="absolute top-20 -right-20 w-96 h-96 bg-gold-500/10 blur-3xl rounded-full"></div>
+    <div class="absolute bottom-0 -left-20 w-96 h-96 bg-profit-500/10 blur-3xl rounded-full"></div>
+    <div class="relative max-w-5xl mx-auto text-center">
+      <span class="inline-block px-4 py-1.5 rounded-full border border-gold-500/30 text-gold-400 text-sm mb-6 glass">معامله‌گر حرفه‌ای XAU/USD و NAS100</span>
+      <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6">
+        بازار طلا را با <span class="gold-text">نگاه ICT</span> <br class="hidden md:block" />
+        تحلیل و معامله کنید
+      </h1>
+      <p class="text-gray-400 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+        من رسول هستم؛ معامله‌گر روزانه‌ی طلا با تمرکز بر ساختار بازار، نقدینگی و جریان سفارش‌ها. اینجا تحلیل‌های روزانه و هفتگی، آموزش مفاهیم ICT و ابزارهای کاربردی خودم را منتشر می‌کنم.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#analysis" class="px-8 py-3.5 rounded-xl bg-gradient-to-l from-gold-500 to-gold-600 text-night-950 font-bold glow hover:scale-105 transition">آخرین تحلیل‌ها</a>
+        <a href="#education" class="px-8 py-3.5 rounded-xl glass text-gray-100 font-bold hover:border-gold-500/50 transition">شروع آموزش</a>
+        <a href="#tools" class="px-8 py-3.5 rounded-xl border border-profit-500/40 text-profit-400 font-bold hover:bg-profit-500/10 transition">چک‌لیست بایاس</a>
+      </div>
+
+      <div class="grid grid-cols-3 gap-4 max-w-2xl mx-auto mt-16">
+        <div class="glass rounded-2xl p-5">
+          <p class="text-2xl md:text-3xl font-black gold-text">+۵ سال</p>
+          <p class="text-sm text-gray-400 mt-1">تجربه‌ی معاملاتی</p>
+        </div>
+        <div class="glass rounded-2xl p-5">
+          <p class="text-2xl md:text-3xl font-black gold-text">XAU/USD</p>
+          <p class="text-sm text-gray-400 mt-1">تمرکز اصلی</p>
+        </div>
+        <div class="glass rounded-2xl p-5">
+          <p class="text-2xl md:text-3xl font-black gold-text">ICT</p>
+          <p class="text-sm text-gray-400 mt-1">روش معاملاتی</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="py-24 px-5">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-black mb-3">آموزش <span class="gold-text">ICT</span></h2>
+        <p class="text-gray-400">مفاهیم کلیدی را از پایه تا کاربرد عملی یاد بگیرید</p>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-3 mb-10" id="eduFilters">
+        <button data-filter="all" class="filter-btn chip-active px-5 py-2 rounded-full border border-white/10 text-sm font-bold transition">همه</button>
+        <button data-filter="structure" class="filter-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold text-gray-300 hover:border-gold-500/50 transition">ساختار بازار</button>
+        <button data-filter="liquidity" class="filter-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold text-gray-300 hover:border-gold-500/50 transition">نقدینگی</button>
+        <button data-filter="entry" class="filter-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold text-gray-300 hover:border-gold-500/50 transition">ورود و مدیریت ریسک</button>
+      </div>
+
+      <div id="eduGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- Analysis -->
+  <section id="analysis" class="py-24 px-5 bg-night-900/60">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-black mb-3">آرشیو <span class="gold-text">تحلیل‌ها</span></h2>
+          <p class="text-gray-400">بایاس هفتگی و روزانه‌ی طلا، همراه با تاریخ و چارت</p>
+        </div>
+        <div class="flex gap-3" id="biasFilters">
+          <button data-bias="all" class="bias-btn chip-active px-4 py-2 rounded-lg border border-white/10 text-sm font-bold transition">همه</button>
+          <button data-bias="bull" class="bias-btn px-4 py-2 rounded-lg border border-white/10 text-sm font-bold text-profit-400 transition">صعودی</button>
+          <button data-bias="bear" class="bias-btn px-4 py-2 rounded-lg border border-white/10 text-sm font-bold text-red-400 transition">نزولی</button>
+        </div>
+      </div>
+      <div id="analysisGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- Tools & Checklist -->
+  <section id="tools" class="py-24 px-5">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-black mb-3">ابزارها و <span class="gold-text">چک‌لیست بایاس</span></h2>
+        <p class="text-gray-400">قبل از هر معامله، بایاس را با این چک‌لیست بررسی کنید</p>
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-6">
+        <div class="lg:col-span-3 glass rounded-3xl p-6 md:p-8">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl font-bold">چک‌لیست بایاس روزانه</h3>
+            <span id="progressText" class="text-sm text-gold-400 font-bold">۰٪</span>
+          </div>
+          <div class="w-full h-2 rounded-full bg-night-700 mb-6 overflow-hidden">
+            <div id="progressBar" class="h-full bg-gradient-to-l from-profit-500 to-gold-500 transition-all duration-500" style="width:0%"></div>
+          </div>
+          <ul id="checklist" class="space-y-3"></ul>
+          <button id="resetChecklist" class="mt-6 text-sm text-gray-400 hover:text-red-400 transition">پاک کردن چک‌لیست</button>
+        </div>
+
+        <div class="lg:col-span-2 space-y-6">
+          <div class="glass rounded-3xl p-6 card-hover">
+            <div class="w-12 h-12 rounded-xl bg-gold-500/15 flex items-center justify-center text-gold-400 mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M9 17v-6m4 6V7m4 10v-3M4 20h16"/></svg>
+            </div>
+            <h4 class="font-bold text-lg mb-2">ماشین‌حساب ریسک</h4>
+            <p class="text-gray-400 text-sm leading-relaxed">محاسبه‌ی حجم پوزیشن بر اساس درصد ریسک و فاصله‌ی حد ضرر.</p>
+          </div>
+          <div class="glass rounded-3xl p-6 card-hover">
+            <div class="w-12 h-12 rounded-xl bg-profit-500/15 flex items-center justify-center text-profit-400 mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M4 4h16v16H4zM4 9h16M9 4v16"/></svg>
+            </div>
+            <h4 class="font-bold text-lg mb-2">ژورنال معاملاتی</h4>
+            <p class="text-gray-400 text-sm leading-relaxed">ثبت، بررسی و تحلیل آماری معاملات با فایل اکسل اختصاصی.</p>
+          </div>
+          <div class="glass rounded-3xl p-6 card-hover">
+            <div class="w-12 h-12 rounded-xl bg-gold-500/15 flex items-center justify-center text-gold-400 mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z"/></svg>
+            </div>
+            <h4 class="font-bold text-lg mb-2">تقویم کیلرزون</h4>
+            <p class="text-gray-400 text-sm leading-relaxed">بازه‌های زمانی پرنوسان لندن و نیویورک برای جست‌وجوی ورود.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journal / Stats -->
+  <section id="journal" class="py-24 px-5 bg-night-900/60">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-black mb-3">ژورنال <span class="gold-text">معاملاتی</span></h2>
+        <p class="text-gray-400">خلاصه‌ی عملکرد ماهانه (داده‌های نمونه)</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+        <div class="glass rounded-2xl p-6"><p class="text-sm text-gray-400 mb-2">تعداد معاملات</p><p class="text-3xl font-black" id="statTrades">—</p></div>
+        <div class="glass rounded-2xl p-6"><p class="text-sm text-gray-400 mb-2">نرخ برد</p><p class="text-3xl font-black text-profit-400" id="statWinRate">—</p></div>
+        <div class="glass rounded-2xl p-6"><p class="text-sm text-gray-400 mb-2">میانگین R</p><p class="text-3xl font-black text-gold-400" id="statAvgR">—</p></div>
+        <div class="glass rounded-2xl p-6"><p class="text-sm text-gray-400 mb-2">بیشترین افت (Drawdown)</p><p class="text-3xl font-black text-red-400" id="statDD">—</p></div>
+      </div>
+
+      <div class="glass rounded-3xl p-6 md:p-8">
+        <h3 class="font-bold mb-4">منحنی تجمعی R</h3>
+        <div class="w-full overflow-x-auto">
+          <svg id="equityChart" viewBox="0 0 800 300" class="w-full min-w-[600px] h-72"></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-24 px-5">
+    <div class="max-w-5xl mx-auto">
+      <div class="glass rounded-3xl p-8 md:p-14 text-center relative overflow-hidden">
+        <div class="absolute -top-20 -left-20 w-64 h-64 bg-profit-500/20 blur-3xl rounded-full"></div>
+        <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-gold-500/20 blur-3xl rounded-full"></div>
+        <div class="relative">
+          <h2 class="text-3xl md:text-4xl font-black mb-4">همراه شبکه‌ی <span class="gold-text">withrasool</span> باشید</h2>
+          <p class="text-gray-400 mb-10 max-w-xl mx-auto leading-relaxed">تحلیل‌های روزانه، نکات آموزشی و تجربه‌های معاملاتی را در شبکه‌های اجتماعی دنبال کنید.</p>
+          <div class="grid md:grid-cols-2 gap-5 max-w-2xl mx-auto">
+            <a href="https://t.me/tradewithrasool" target="_blank" rel="noopener" class="flex items-center justify-between gap-4 p-6 rounded-2xl bg-sky-500/10 border border-sky-500/30 hover:bg-sky-500/20 transition card-hover">
+              <div class="text-right">
+                <p class="font-bold text-lg">کانال تلگرام</p>
+                <p class="text-sm text-gray-400">تحلیل روزانه و سیگنال‌های آموزشی</p>
+              </div>
+              <span class="text-sky-400 text-2xl">➜</span>
+            </a>
+            <a href="https://instagram.com/withrasool" target="_blank" rel="noopener" class="flex items-center justify-between gap-4 p-6 rounded-2xl bg-pink-500/10 border border-pink-500/30 hover:bg-pink-500/20 transition card-hover">
+              <div class="text-right">
+                <p class="font-bold text-lg">اینستاگرام</p>
+                <p class="text-sm text-gray-400">ریلز آموزشی و خلاصه‌ی معاملات</p>
+              </div>
+              <span class="text-pink-400 text-2xl">➜</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5 py-10 px-5">
+    <div class="max-w-7xl mx-auto text-center space-y-4">
+      <p class="font-black gold-text text-lg">withrasool</p>
+      <p class="text-sm text-gray-500 leading-relaxed max-w-3xl mx-auto">
+        هشدار: محتوای این سایت صرفاً جنبه‌ی آموزشی و تحلیلی دارد و توصیه‌ی سرمایه‌گذاری نیست. معاملات طلا و مشتقات آن ریسک بالایی دارند و ممکن است کل سرمایه‌ی شما را از بین ببرد.
+      </p>
+      <p class="text-sm text-gray-600">© <span id="year"></span> تمامی حقوق محفوظ است.</p>
+    </div>
+  </footer>
+
+<script>
+  // ---------- Mobile menu ----------
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+  document.getElementById('year').textContent = new Date().toLocaleDateString('fa-IR', { year: 'numeric' });
+
+  // ---------- Helpers ----------
+  const toFaDigits = (s) => String(s).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+
+  // ---------- Education data ----------
+  const eduData = [
+    { cat: 'structure', title: 'اردربلاک (Order Block)', desc: 'آخرین کندل مخالف قبل از حرکت جابه‌جایی‌کننده‌ی بازار؛ ناحیه‌ای که سفارش‌های نهادی احتمالاً در آن تجمیع شده‌اند.', level: 'مقدماتی' },
+    { cat: 'entry', title: 'اف‌وی‌جی (Fair Value Gap)', desc: 'شکاف قیمتی سه‌کندلی که نشان‌دهنده‌ی عدم تعادل بین خریدار و فروشنده است و معمولاً بازار تمایل دارد آن را پر کند.', level: 'مقدماتی' },
+    { cat: 'liquidity', title: 'لیکوییدیتی (Liquidity)', desc: 'تجمع حد ضررهای خرده‌فروشان بالای سقف‌ها و زیر کف‌های قبلی؛ هدفی که بازار برای تامین سفارش به سمت آن حرکت می‌کند.', level: 'مقدماتی' },
+    { cat: 'structure', title: 'ام‌اس‌اس (Market Structure Shift)', desc: 'شکست ساختار همراه با تغییر جهت بازار؛ نشانه‌ای که تایید می‌کند روند قبلی احتمالاً به پایان رسیده است.', level: 'متوسط' },
+    { cat: 'liquidity', title: 'اس‌ام‌تی (SMT Divergence)', desc: 'واگرایی بین دارایی‌های همبسته (مثلاً طلا و دلار شاخص) در ساخت سقف یا کف، که می‌تواند نشانه‌ی ضعف حرکت باشد.', level: 'پیشرفته' },
+    { cat: 'entry', title: 'پریمیوم و دیسکانت', desc: 'تقسیم رنج معاملاتی به دو نیمه‌ی بالا و پایین با میانه‌ی تعادل؛ خرید در دیسکانت و فروش در پریمیوم اولویت دارد.', level: 'متوسط' },
+    { cat: 'entry', title: 'کیلرزون (Killzones)', desc: 'بازه‌های زمانی با احتمال بالای نوسان و حرکت، مانند سشن لندن و نیویورک، که برای جست‌وجوی ستاپ زمان‌بندی می‌شوند.', level: 'مقدماتی' },
+    { cat: 'structure', title: 'بی‌او‌اس (Break of Structure)', desc: 'شکست یک سقف یا کف مهم در جهت روند فعلی که ادامه‌دار بودن حرکت را نشان می‌دهد.', level: 'مقدماتی' },
+    { cat: 'liquidity', title: 'پی‌دی آرِی (PD Array)', desc: 'مجموعه‌ای از نواحی ارزشمند مانند FVG و اردربلاک که قیمت برای واکنش یا ورود به آن‌ها توجه می‌کند.', level: 'پیشرفته' }
+  ];
+
+  const eduGrid = document.getElementById('eduGrid');
+  function renderEdu(filter = 'all') {
+    const list = filter === 'all' ? eduData : eduData.filter(i => i.cat === filter);
+    eduGrid.innerHTML = list.map(item => `
+      <article class="glass rounded-2xl p-6 card-hover flex flex-col">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs md:text-sm px-3 py-1 rounded-full bg-gold-500/15 text-gold-400 font-bold">${item.level}</span>
+          <span class="text-gold-500/60 text-2xl">◆</span>
+        </div>
+        <h3 class="font-bold text-lg mb-3">${item.title}</h3>
+        <p class="text-gray-400 text-sm leading-relaxed flex-1">${item.desc}</p>
+        <a href="#contact" class="mt-5 text-sm font-bold text-gold-400 hover:text-gold-300 transition">ادامه‌ی آموزش ←</a>
+      </article>
+    `).join('');
+  }
+
+  document.querySelectorAll('#eduFilters .filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#eduFilters .filter-btn').forEach(b => {
+        b.classList.remove('chip-active');
+        b.classList.add('text-gray-300');
+      });
+      btn.classList.add('chip-active');
+      btn.classList.remove('text-gray-300');
+      renderEdu(btn.dataset.filter);
+    });
+  });
+  renderEdu();
+
+  // ---------- Analysis archive (sample data) ----------
+  const analysisData = [
+    { date: '۱۴۰۵/۰۸/۱۵', week: 'صعودی', day: 'صعودی', note: 'جارو لیکوییدیتی زیر کف هفته‌ی قبل، سپس ام‌اس‌اس صعودی روی تایم‌فریم ۱۵ دقیقه.', bias: 'bull', chart: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=60' },
+    { date: '۱۴۰۵/۰۸/۱۴', week: 'صعودی', day: 'نزولی', note: 'اصلاح به سمت اف‌وی‌جی روزانه؛ منتظر تایید در دیسکانت بودیم.', bias: 'bear', chart: 'https://images.unsplash.com/photo-1642543492481-44e81e3914a7?w=600&q=60' },
+    { date: '۱۴۰۵/۰۸/۱۳', week: 'نزولی', day: 'نزولی', note: 'شکست ساختار نزولی در سشن نیویورک و تحویل قیمت به ناحیه‌ی پریمیوم.', bias: 'bear', chart: 'https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?w=600&q=60' },
+    { date: '۱۴۰۵/۰۸/۱۲', week: 'نزولی', day: 'صعود
