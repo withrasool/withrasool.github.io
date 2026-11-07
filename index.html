@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>withrasool | معامله‌گر طلا به سبک ICT</title>
   <meta name="description" content="تحلیل روزانه و هفتگی طلا (XAU/USD) به سبک ICT، آموزش مفاهیم اسمارت‌مانی و ابزار چک‌لیست بایاس." />
+  <link rel="icon" type="image/png" href="logo.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -49,7 +50,7 @@
   <header class="fixed top-0 inset-x-0 z-50 glass">
     <nav class="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
       <a href="#hero" class="flex items-center gap-2">
-        <span class="w-9 h-9 rounded-lg bg-gradient-to-br from-gold-300 to-gold-600 flex items-center justify-center text-night-950 font-black">R</span>
+        <img src="logo.png" alt="لوگوی withrasool" class="w-9 h-9 rounded-lg object-contain" />
         <span class="font-black text-lg gold-text">withrasool</span>
       </a>
       <ul class="hidden md:flex items-center gap-7 text-sm text-gray-300">
@@ -78,6 +79,7 @@
     <div class="absolute top-20 -right-20 w-96 h-96 bg-gold-500/10 blur-3xl rounded-full"></div>
     <div class="absolute bottom-0 -left-20 w-96 h-96 bg-profit-500/10 blur-3xl rounded-full"></div>
     <div class="relative max-w-5xl mx-auto text-center">
+      <img src="logo.png" alt="لوگوی withrasool" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-6 rounded-2xl object-contain glow" />
       <span class="inline-block px-4 py-1.5 rounded-full border border-gold-500/30 text-gold-400 text-sm mb-6 glass">معامله‌گر حرفه‌ای XAU/USD و NAS100</span>
       <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6">
         بازار طلا را با <span class="gold-text">نگاه ICT</span> <br class="hidden md:block" />
@@ -251,6 +253,7 @@
   <!-- Footer -->
   <footer class="border-t border-white/5 py-10 px-5">
     <div class="max-w-7xl mx-auto text-center space-y-4">
+      <img src="logo.png" alt="لوگوی withrasool" class="w-14 h-14 mx-auto rounded-xl object-contain" />
       <p class="font-black gold-text text-lg">withrasool</p>
       <p class="text-sm text-gray-500 leading-relaxed max-w-3xl mx-auto">
         هشدار: محتوای این سایت صرفاً جنبه‌ی آموزشی و تحلیلی دارد و توصیه‌ی سرمایه‌گذاری نیست. معاملات طلا و مشتقات آن ریسک بالایی دارند و ممکن است کل سرمایه‌ی شما را از بین ببرد.
@@ -318,4 +321,132 @@
     { date: '۱۴۰۵/۰۸/۱۵', week: 'صعودی', day: 'صعودی', note: 'جارو لیکوییدیتی زیر کف هفته‌ی قبل، سپس ام‌اس‌اس صعودی روی تایم‌فریم ۱۵ دقیقه.', bias: 'bull', chart: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=60' },
     { date: '۱۴۰۵/۰۸/۱۴', week: 'صعودی', day: 'نزولی', note: 'اصلاح به سمت اف‌وی‌جی روزانه؛ منتظر تایید در دیسکانت بودیم.', bias: 'bear', chart: 'https://images.unsplash.com/photo-1642543492481-44e81e3914a7?w=600&q=60' },
     { date: '۱۴۰۵/۰۸/۱۳', week: 'نزولی', day: 'نزولی', note: 'شکست ساختار نزولی در سشن نیویورک و تحویل قیمت به ناحیه‌ی پریمیوم.', bias: 'bear', chart: 'https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?w=600&q=60' },
-    { date: '۱۴۰۵/۰۸/۱۲', week: 'نزولی', day: 'صعود
+    { date: '۱۴۰۵/۰۸/۱۲', week: 'نزولی', day: 'صعودی', note: 'برگشت از کیلرزون لندن پس از برداشت لیکوییدیتی کف روز قبل.', bias: 'bull', chart: 'https://images.unsplash.com/photo-1610375461246-83df859d849d?w=600&q=60' },
+    { date: '۱۴۰۵/۰۸/۱۱', week: 'صعودی', day: 'صعودی', note: 'ادامه‌ی روند با بی‌او‌اس صعودی و عبور از سقف قبلی.', bias: 'bull', chart: 'https://images.unsplash.com/photo-1624365168968-f283d506c6b6?w=600&q=60' }
+  ];
+
+  const analysisGrid = document.getElementById('analysisGrid');
+  const biasLabel = { bull: 'صعودی', bear: 'نزولی' };
+  function renderAnalysis(filter = 'all') {
+    const list = filter === 'all' ? analysisData : analysisData.filter(i => i.bias === filter);
+    analysisGrid.innerHTML = list.map(item => `
+      <article class="glass rounded-2xl overflow-hidden card-hover">
+        <img src="${item.chart}" alt="چارت ${item.date}" loading="lazy" class="w-full h-40 object-cover opacity-80" />
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-sm text-gray-400">${item.date}</span>
+            <span class="text-xs px-3 py-1 rounded-full font-bold ${item.bias === 'bull' ? 'bg-profit-500/15 text-profit-400' : 'bg-red-500/15 text-red-400'}">بایاس ${biasLabel[item.bias]}</span>
+          </div>
+          <p class="text-sm text-gray-300 mb-2">هفتگی: <b>${item.week}</b> | روزانه: <b>${item.day}</b></p>
+          <p class="text-gray-400 text-sm leading-relaxed">${item.note}</p>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  document.querySelectorAll('#biasFilters .bias-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#biasFilters .bias-btn').forEach(b => b.classList.remove('chip-active'));
+      btn.classList.add('chip-active');
+      renderAnalysis(btn.dataset.bias);
+    });
+  });
+  renderAnalysis();
+
+  // ---------- Daily bias checklist (saved in browser) ----------
+  const checklistItems = [
+    'ساختار تایم‌فریم بالا (HTF) مشخص است',
+    'آخرین BOS یا MSS تایید شده',
+    'لیکوییدیتی هدف شناسایی شده',
+    'ناحیه‌ی پریمیوم یا دیسکانت بررسی شده',
+    'اف‌وی‌جی یا اردربلاک برای ورود آماده است',
+    'در کیلرزون هستیم',
+    'ریسک و حد ضرر تعیین شده'
+  ];
+
+  const checklistEl = document.getElementById('checklist');
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const STORAGE_KEY = 'withrasool-checklist';
+  let checked = [];
+  try { checked = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch (e) { checked = []; }
+
+  function renderChecklist() {
+    checklistEl.innerHTML = checklistItems.map((text, i) => `
+      <li>
+        <label class="flex items-center gap-3 p-4 rounded-xl bg-night-800/60 border border-white/5 cursor-pointer hover:border-gold-500/40 transition">
+          <input type="checkbox" data-i="${i}" ${checked.includes(i) ? 'checked' : ''} />
+          <span class="text-sm text-gray-200">${text}</span>
+        </label>
+      </li>
+    `).join('');
+    const pct = Math.round(checked.length / checklistItems.length * 100);
+    progressBar.style.width = pct + '%';
+    progressText.textContent = toFaDigits(pct) + '٪';
+  }
+
+  function saveChecklist() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(checked)); } catch (e) {}
+  }
+
+  checklistEl.addEventListener('change', (e) => {
+    if (e.target.type !== 'checkbox') return;
+    const i = Number(e.target.dataset.i);
+    checked = e.target.checked ? [...checked, i] : checked.filter(x => x !== i);
+    saveChecklist();
+    renderChecklist();
+  });
+
+  document.getElementById('resetChecklist').addEventListener('click', () => {
+    checked = [];
+    saveChecklist();
+    renderChecklist();
+  });
+  renderChecklist();
+
+  // ---------- Journal stats (sample data) ----------
+  const sampleR = [1.5, -1, 2, -1, 1, -1, 3, -1, 0.5, -1];
+  const tradesCount = sampleR.length;
+  const wins = sampleR.filter(r => r > 0).length;
+  const winRate = Math.round(wins / tradesCount * 100);
+  const avgR = sampleR.reduce((a, b) => a + b, 0) / tradesCount;
+
+  const curve = [0];
+  let cum = 0, peak = 0, maxDD = 0;
+  sampleR.forEach(r => {
+    cum += r;
+    curve.push(cum);
+    peak = Math.max(peak, cum);
+    maxDD = Math.min(maxDD, cum - peak);
+  });
+
+  document.getElementById('statTrades').textContent = toFaDigits(tradesCount);
+  document.getElementById('statWinRate').textContent = toFaDigits(winRate) + '٪';
+  document.getElementById('statAvgR').textContent = toFaDigits(avgR.toFixed(2)) + 'R';
+  document.getElementById('statDD').textContent = toFaDigits(maxDD.toFixed(2)) + 'R';
+
+  // Equity curve
+  const svg = document.getElementById('equityChart');
+  const minV = Math.min(...curve), maxV = Math.max(...curve);
+  const range = (maxV - minV) || 1;
+  const step = 720 / (curve.length - 1);
+  const pts = curve.map((v, i) => {
+    const x = 40 + i * step;
+    const y = 260 - ((v - minV) / range) * 220;
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  });
+  svg.innerHTML = `
+    <defs>
+      <linearGradient id="eqFill" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stop-color="#d4af37" stop-opacity="0.35"/>
+        <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <line x1="40" y1="260" x2="760" y2="260" stroke="rgba(255,255,255,0.1)"/>
+    <polygon points="${pts.join(' ')} 760,260 40,260" fill="url(#eqFill)"/>
+    <polyline points="${pts.join(' ')}" fill="none" stroke="#d4af37" stroke-width="3" stroke-linejoin="round"/>
+  `;
+</script>
+
+</body>
+</html>
