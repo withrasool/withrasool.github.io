@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ورود و ثبت‌نام | withrasool</title>
+  <meta name="theme-color" content="#0a1330" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { sans: ['Vazirmatn', 'Tahoma', 'sans-serif'] },
+      colors: { navy: { 950: '#0a1330', 900: '#0f1d4a' }, blue: { 300: '#93c5fd', 200: '#bfdbfe' } }
+    } } }
+  </script>
+  <style>
+    body { background: linear-gradient(180deg, #0a1330 0%, #0c1840 45%, #0f1d4a 100%); color: #fff; min-height: 100vh; }
+    .card { background: rgba(255,255,255,0.04); border: 1px solid rgba(147,197,253,0.18); }
+    input { background: rgba(255,255,255,0.06); border: 1px solid rgba(147,197,253,0.25); color: #fff; }
+    input:focus { outline: none; border-color: #93c5fd; }
+    .tab-on { background: #2563eb; color: #fff; }
+  </style>
+</head>
+<body class="font-sans antialiased">
+  <header class="bg-navy-950/90 border-b border-blue-300/10">
+    <nav class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+      <a href="index.html"><img src="logo.png" alt="لوگوی withrasool" class="h-14 w-auto" /></a>
+      <a href="education.html" class="text-blue-200 hover:text-white">آموزش</a>
+    </nav>
+  </header>
+
+  <main class="px-5 py-16">
+    <div class="max-w-md mx-auto card rounded-2xl p-7">
+      <div class="flex gap-2 mb-6 p-1 rounded-xl bg-navy-900">
+        <button id="tabLogin" class="flex-1 py-2 rounded-lg font-bold tab-on">ورود</button>
+        <button id="tabSignup" class="flex-1 py-2 rounded-lg font-bold text-blue-200">ثبت‌نام</button>
+      </div>
+
+      <form id="loginForm" class="space-y-4">
+        <div>
+          <label class="block text-sm text-blue-200 mb-1">ایمیل</label>
+          <input name="email" type="email" required class="w-full rounded-lg px-4 py-3" dir="ltr" />
+        </div>
+        <div>
+          <label class="block text-sm text-blue-200 mb-1">رمز عبور</label>
+          <input name="password" type="password" required minlength="6" class="w-full rounded-lg px-4 py-3" dir="ltr" />
+        </div>
+        <button class="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 font-bold transition">ورود</button>
+      </form>
+
+      <form id="signupForm" class="space-y-4 hidden">
+        <div>
+          <label class="block text-sm text-blue-200 mb-1">نام و نام خانوادگی</label>
+          <input name="full_name" required class="w-full rounded-lg px-4 py-3" />
+        </div>
+        <div>
+          <label class="block text-sm text-blue-200 mb-1">شماره موبایل (مثلاً 09121234567)</label>
+          <input name="phone" type="tel" required class="w-full rounded-lg px-4 py-3" dir="ltr" />
+        </div>
+        <div>
+          <label class="block text-sm text-blue-200 mb-1">ایمیل</label>
+          <input name="email" type="email" required class="w-full rounded-lg px-4 py-3" dir="ltr" />
+        </div>
+        <div>
+          <label class="block text-sm text-blue-200 mb-1">رمز عبور (حداقل ۶ کاراکتر)</label>
+          <input name="password" type="password" required minlength="6" class="w-full rounded-lg px-4 py-3" dir="ltr" />
+        </div>
+        <label class="flex items-start gap-2 text-sm text-blue-200">
+          <input name="consent" type="checkbox" required class="mt-1" />
+          <span>با نگهداری ایمیل و شماره‌ام برای ارتباط با من در چارچوب این سایت موافقم.</span>
+        </label>
+        <button class="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 font-bold transition">ثبت‌نام</button>
+      </form>
+
+      <p id="msg" class="mt-5 text-sm text-center text-blue-200 leading-loose"></p>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="app.js"></script>
+  <script>
+    const msg = document.getElementById('msg');
+    const tabLogin = document.getElementById('tabLogin');
+    const tabSignup = document.getElementById('tabSignup');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+
+    function showTab(isLogin) {
+      loginForm.classList.toggle('hidden', !isLogin);
+      signupForm.classList.toggle('hidden', isLogin);
+      tabLogin.classList.toggle('tab-on', isLogin);
+      tabSignup.classList.toggle('tab-on', !isLogin);
+      tabLogin.classList.toggle('text-blue-200', !isLogin);
+      tabSignup.classList.toggle('text-blue-200', isLogin);
+      msg.textContent = '';
+    }
+    tabLogin.onclick = () => showTab(true);
+    tabSignup.onclick = () => showTab(false);
+
+    // تبدیل اعداد فارسی به انگلیسی و حذف فاصله
+    const fa2en = s => s.replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/\s/g, '');
+
+    loginForm.onsubmit = async (e) => {
+      e.preventDefault();
+      const f = new FormData(loginForm);
+      msg.textContent = 'در حال ورود...';
+      const { error } = await sb.auth.signInWithPassword({ email: f.get('email'), password: f.get('password') });
+      if (error) { msg.textContent = 'ایمیل یا رمز عبور اشتباه است.'; return; }
+      location.href = 'education.html';
+    };
+
+    signupForm.onsubmit = async (e) => {
+      e.preventDefault();
+      const f = new FormData(signupForm);
+      const phone = fa2en(f.get('phone'));
+      if (!/^09\d{9}$/.test(phone)) { msg.textContent = 'شماره موبایل معتبر نیست (مثلاً 09121234567).'; return; }
+      msg.textContent = 'در حال ثبت‌نام...';
+      const { error } = await sb.auth.signUp({
+        email: f.get('email'),
+        password: f.get('password'),
+        options: {
+          data: { full_name: f.get('full_name').trim(), phone: phone },
+          emailRedirectTo: location.origin + '/login.html'
+        }
+      });
+      if (error) { msg.textContent = 'خطا: ' + error.message; return; }
+      msg.textContent = 'ثبت‌نام انجام شد. ایمیل تأیید را بررسی کنید و سپس وارد شوید.';
+      showTab(true);
+    };
+  </script>
+</body>
+</html>

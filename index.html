@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>withrasool | معامله‌گری طلا به سبک ICT</title>
+  <meta name="description" content="آموزش معامله‌گری طلا (XAU/USD) به سبک ICT توسط withrasool." />
+  <meta name="theme-color" content="#0a1330" />
+  <link rel="icon" type="image/png" href="logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Vazirmatn', 'Tahoma', 'sans-serif'] },
+          colors: {
+            navy: { 950: '#0a1330', 900: '#0f1d4a', 800: '#162a66' },
+            blue: { 700: '#1e40af', 600: '#2563eb', 500: '#3b82f6', 300: '#93c5fd', 200: '#bfdbfe' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: linear-gradient(180deg, #0a1330 0%, #0c1840 45%, #0f1d4a 100%); color: #ffffff; min-height: 100vh; }
+    .card { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(147, 197, 253, 0.18); }
+    .card:hover { border-color: rgba(147, 197, 253, 0.5); background: rgba(255, 255, 255, 0.07); }
+    .title-accent { color: #93c5fd; }
+  </style>
+</head>
+
+<body class="font-sans antialiased">
+
+  <!-- Navbar -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-navy-950/90 backdrop-blur border-b border-blue-300/10">
+    <nav class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="logo.png" alt="لوگوی withrasool" class="h-14 w-auto" />
+      </a>
+      <ul class="hidden md:flex items-center gap-8 text-base text-blue-200">
+        <li><a href="education.html" class="hover:text-white transition">آموزش</a></li>
+        <li><a href="contact.html" class="hover:text-white transition">ارتباط</a></li>
+        <li><a href="login.html" data-auth-link="login.html" class="hover:text-white transition">ورود</a></li>
+      </ul>
+      <button id="menuBtn" class="md:hidden text-white p-2" aria-label="منو">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </nav>
+    <div id="mobileMenu" class="hidden md:hidden border-t border-blue-300/10 bg-navy-950 px-5 py-4 space-y-4 text-base text-blue-200">
+      <a href="education.html" class="block hover:text-white">آموزش</a>
+      <a href="contact.html" class="block hover:text-white">ارتباط</a>
+      <a href="login.html" data-auth-link="login.html" class="block hover:text-white">ورود</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main class="pt-32 pb-20 px-5">
+    <section class="max-w-4xl mx-auto text-center">
+      <img src="logo.png" alt="لوگوی withrasool" class="h-28 w-auto mx-auto mb-8 rounded-2xl" />
+      <p class="inline-block px-4 py-1.5 rounded-full border border-blue-300/30 text-blue-200 text-sm mb-6">معامله‌گر طلا با سبک ICT</p>
+      <h1 class="text-3xl md:text-5xl font-black leading-tight mb-6">
+        آموزش و تحلیل <span class="title-accent">طلا</span> با نگاه ICT
+      </h1>
+      <p class="text-blue-100 text-base md:text-lg leading-loose max-w-2xl mx-auto mb-12">
+        مفاهیم ساختار بازار، نقدینگی و جریان سفارش‌ها را به زبان ساده یاد بگیرید و تحلیل‌های خودم را دنبال کنید.
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
+        <a href="education.html" class="card rounded-2xl p-7 text-right transition">
+          <h2 class="text-xl font-bold mb-2">آموزش</h2>
+          <p class="text-blue-200 text-sm leading-relaxed">مطالب آموزشی مفاهیم ICT از پایه تا کاربرد</p>
+        </a>
+        <a href="contact.html" class="card rounded-2xl p-7 text-right transition">
+          <h2 class="text-xl font-bold mb-2">ارتباط</h2>
+          <p class="text-blue-200 text-sm leading-relaxed">کانال تلگرام و اینستاگرام withrasool</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-blue-300/10 py-8 px-5">
+    <div class="max-w-6xl mx-auto text-center space-y-3">
+      <p class="font-bold text-blue-200">withrasool</p>
+      <p class="text-sm text-blue-300/80 leading-relaxed max-w-3xl mx-auto">
+        هشدار: محتوای این سایت صرفاً جنبه‌ی آموزشی دارد و توصیه‌ی سرمایه‌گذاری نیست. معاملات طلا و مشتقات آن ریسک بالایی دارند.
+      </p>
+      <p class="text-sm text-blue-300/60">© <span id="year"></span> تمامی حقوق محفوظ است.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    document.getElementById('year').textContent = new Date().toLocaleDateString('fa-IR', { year: 'numeric' });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
